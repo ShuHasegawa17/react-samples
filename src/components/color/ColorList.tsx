@@ -1,25 +1,13 @@
-import { Color, IColor } from './Color';
-type IColorListProps = {
-  colors: IColor[];
-  onRemoveColor: (id: string) => void;
-  onRateColor: (id: string, rating: number) => void;
-};
+import { Color } from './Color';
+import { useColors } from '../../provider/ColorProvider';
 
-export const ColorList = ({
-  colors = [],
-  onRemoveColor = (id) => id,
-  onRateColor = (id, rating) => ({ id, rating }),
-}: IColorListProps) => {
+export const ColorList = () => {
+  const { colors } = useColors();
   if (!colors.length) return <div>カラーリストはありません。</div>;
   return (
     <div>
       {colors.map((c) => (
-        <Color
-          key={c.id}
-          {...c}
-          onRemove={onRemoveColor}
-          onRate={onRateColor}
-        />
+        <Color key={c.id} {...c} />
       ))}
     </div>
   );
