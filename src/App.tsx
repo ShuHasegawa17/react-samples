@@ -9,12 +9,14 @@ import { Render } from './components/effect/Render';
 import { CheckboxReducer } from './components/reducer/CheckboxReducer';
 import { Numbers } from './components/reducer/Numbers';
 import { UserReducer } from './components/reducer/User';
+import { Parent } from './components/context/Parent';
 
 export const ColorContext = createContext({ colors: colorData });
 
 function App() {
   return (
     <>
+      <Parent></Parent>
       {/* states */}
       <ColorProvider>
         <AddColorForm />
